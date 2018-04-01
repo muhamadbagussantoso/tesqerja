@@ -10,7 +10,7 @@ var Words = Backbone.Collection.extend({
 
 var WordView = Backbone.View.extend({
 	initialize: function() {
-		$(this.el).css({position:'absolute'});
+		$(this.el).css({position:'relative'});
 		var string = this.model.get('string');
 		var letter_width = 25;
 		var word_width = string.length * letter_width;
@@ -40,7 +40,6 @@ var WordView = Backbone.View.extend({
 	render:function() {
 		$(this.el).css({
 			top:this.model.get('y') + 'px',
-			left:this.model.get('x') + 'px'
 		});
 		var highlight = this.model.get('highlight');
 		$(this.el).find('div').each(function(index,element) {
@@ -55,14 +54,7 @@ var WordView = Backbone.View.extend({
 
 var TyperView = Backbone.View.extend({
 	initialize: function() {
-		var wrapper = $('<div>')
-			.css({
-				position:'fixed',
-				top:'0',
-				left:'0',
-				width:'100%',
-				height:'100%'
-			});
+		var wrapper = $('<div class="col-md-12 container content-wrapper">')
 		this.wrapper = wrapper;
 		
 		var self = this;
@@ -75,7 +67,9 @@ var TyperView = Backbone.View.extend({
 				'min-width':'80%',
 				width:'80%',
 				'margin-bottom':'10px',
-				'z-index':'1000'
+				'z-index':'1000',
+				'left': '50%',
+				'transform': 'translateX(-50%)',
 			}).keyup(function() {
 				var words = self.model.get('words');
 				for(var i = 0;i < words.length;i++) {
@@ -104,7 +98,6 @@ var TyperView = Backbone.View.extend({
 					})
 					.append(text_input)));
 		
-		text_input.css({left:((wrapper.width() - text_input.width()) / 2) + 'px'});
 		text_input.focus();
 		
 		this.listenTo(this.model, 'change', this.render);
@@ -117,7 +110,7 @@ var TyperView = Backbone.View.extend({
 		for(var i = 0;i < words.length;i++) {
 			var word = words.at(i);
 			if(!word.get('view')) {
-				var word_view_wrapper = $('<div>');
+				var word_view_wrapper = $('<div class="word-wrapper">');
 				this.wrapper.append(word_view_wrapper);
 				word.set({
 					view:new WordView({
@@ -151,14 +144,20 @@ var Typer = Backbone.Model.extend({
 	start: function() {
 		var animation_delay = 100;
 		var self = this;
+		console.log(this);
 		setInterval(function() {
 			self.iterate();
 		},animation_delay);
+		console.log('start typer');
 	},
+	stop: function() {
+		console.log('stop typer');
+	},
+
 	
 	iterate: function() {
 		var words = this.get('words');
-		if(words.length < this.get('max_num_words')) {
+		if(words.length < 10) {
 			var top_most_word = undefined;
 			for(var i = 0;i < words.length;i++) {
 				var word = words.at(i);

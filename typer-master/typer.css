@@ -1,3 +1,21 @@
 body {
 	background-color:#eee;
 }
+
+.content-wrapper {
+	background-color: #ddd;
+    width: 90%;
+    height: 80%;
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    margin: 0px;
+    left: 50%;
+    transform: translateX(-53%);
+
+}
+
+.word-wrapper {
+
+	background-color: red;
+}

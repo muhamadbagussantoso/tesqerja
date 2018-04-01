@@ -26,3 +26,19 @@ Kami tidak akan menjelaskan bagaimana cara kerjanya atau library apa yang dipaka
 7. Implementasikan hukuman berupa pengurangan nilai bila salah ketik.
 
 ## Jawaban : 
+
+1.  Backbone , Jquery, ECMAScript,
+### Backbone.js  DOM (HTML, Javascript), 
+### Jquery.js
+### Style coding with "ECMAScript" 
+        new TyperView({
+			model: this,
+			el: $(document.body)
+		});
+
+2.  Masih belum paham, parameter "laggy" itu dari segi apa? Tambahkan lib jquery ui , bootstrap untuk membuat animasi lebih smooth dan responsive.
+3.
+4. Start -> selesai
+5. selesai
+6.
+7.
