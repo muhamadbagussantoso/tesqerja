@@ -22,7 +22,8 @@ var Elevator = function(properties) {
     Elevator.DIRECTION_STAY = 3;
 
     this.id = Elevator.max_id++;
-    this.max_num_people = properties.max_num_people ? properties.max_num_people : Config.elevator_capacity;
+    // this.max_num_people = properties.max_num_people ? properties.max_num_people : Config.elevator_capacity;
+    this.max_num_people =5;
     this.speed_m_per_s = properties.speed_m_per_s ? properties.speed_m_per_s : Config.elevator_speed_m_per_s;
     this.wait_time_s = properties.wait_time_s ? properties.wait_time_s : Config.elevator_wait_time_s;
     this.need_to_wait_s = 0;
@@ -313,7 +314,7 @@ var Simulator = (function() {
                         
                         if(temp_spliced.length > 0) {
                             clear_people_got_off(elevator.at_floor());
-                            for(var j = 0;j < temp_spliced.length;j++) {
+                            for(var j = 0;j < 20;j++) {
                                 add_person_got_off(temp_spliced[j]);
                                 stats.total_delivered_people++;
                             }
