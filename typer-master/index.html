@@ -14,12 +14,23 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
+
+<button id="start">Start</button>
+<button id="Stop">Stop</button>
+<button id="Pause">Pause</button>
+<button id="Resume">Resume</button>
+
 <script type="text/javascript">
 var company_names = ["Agung Podomoro Group","Citibank","Nokia Solution and Networks PT","Bhinneka.com","Tripatra","RCTI","TelkomSigma","Intrias Mandiri Sejati PT","Altermyth","Panin Bank","Gramedia Bookstore","Garuda Indonesia","Chevron Pacific","Darmex Agro","Bank SBI Indonesia PT","DBS Bank","UPS Cardig International PT","Tately NV","Cigna","Antam"];
 
 $(document).ready(function() {
-	var typer = new Typer();
-	typer.start();
+
+    // Start
+	 $("#start").on("click",function() {
+        console.log('start');
+		var typer = new Typer();
+	    typer.start();
+    });
 });
 </script>
 </body>
